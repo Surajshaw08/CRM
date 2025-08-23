@@ -1,3 +1,8 @@
+## 📸 Preview
+
+![CRM Dashboard](./client/public/banner.png)
+
+
 # CRM Deals Module
 
 A full-stack CRM deals management system with advanced search, filtering, and analytics capabilities.
