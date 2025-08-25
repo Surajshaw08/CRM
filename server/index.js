@@ -49,7 +49,6 @@ app.use((err, req, res, next) => {
   });
 });
 
-// 404 handler
 app.use('*', (req, res) => {
   res.status(404).json({ error: 'Route not found' });
 });
@@ -61,11 +60,11 @@ async function startServer() {
     console.log('✅ Database connected successfully');
     
     app.listen(PORT, () => {
-      console.log(`🚀 Server running on port ${PORT}`);
-      console.log(`📊 Deals API available at http://localhost:${PORT}/api/deals`);
+      console.log(` Server running on port ${PORT}`);
+      console.log(` Deals API available at http://localhost:${PORT}/api/deals`);
     });
   } catch (error) {
-    console.error('❌ Failed to start server:', error);
+    console.error(' Failed to start server:', error);
     process.exit(1);
   }
 }

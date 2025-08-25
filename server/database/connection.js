@@ -4,7 +4,7 @@ const mysql = require('mysql2/promise');
 const dbConfig = {
   host: process.env.DB_HOST || 'localhost',
   user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || '',   // ✅ empty string if root has no password
+  password: process.env.DB_PASSWORD || '', 
   database: process.env.DB_NAME || 'cms_deals',
   port: process.env.DB_PORT || 3306,
   waitForConnections: true,
@@ -35,19 +35,23 @@ async function createConnection() {
     await connection.ping();
     connection.release();
 
-    console.log('✅ Database connection pool created successfully');
+    console.log(' Database connection pool created successfully');
     return pool;
   } catch (error) {
-    console.error('❌ Database connection failed:', error);
+    console.error(' Database connection failed:', error);
     throw error;
   }
 }
 
 // Get connection from pool
 async function getConnection() {
+
   if (!pool) {
+
     throw new Error('Database connection not initialized');
+
   }
+  
   return await pool.getConnection();
 }
 
@@ -68,19 +72,29 @@ async function executeQuery(query, params = []) {
   }
 }
 
+
+
+
 // Close all connections
 async function closeConnection() {
+  
   if (pool) {
+
+
     await pool.end();
     pool = null;
-    console.log('✅ Database connections closed');
+
+    console.log(' Database connections closed');
   }
 }
 
 module.exports = {
+
   createConnection,
   getConnection,
   executeQuery,
   closeConnection,
+
   pool: () => pool
+
 };

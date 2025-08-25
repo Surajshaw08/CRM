@@ -2,7 +2,7 @@ const { createConnection, executeQuery } = require('./database/connection');
 
 async function setupDatabase() {
   try {
-    console.log('🚀 Setting up database...');
+    console.log(' Setting up database...');
     
     // Create deals table
     const createDealsTable = `
@@ -134,16 +134,16 @@ async function setupDatabase() {
         `, [deal.name, deal.contact_name, deal.company, deal.stage, deal.value, deal.close_date, deal.description]);
       }
       
-      console.log(`✅ Seeded ${sampleDeals.length} sample deals successfully`);
+      console.log(` Seeded ${sampleDeals.length} sample deals successfully`);
     } else {
-      console.log('ℹ️  Deals table already contains data, skipping seeding');
+      console.log('ℹ  Deals table already contains data, skipping seeding');
     }
     
     console.log('🎉 Database setup completed successfully!');
     process.exit(0);
     
   } catch (error) {
-    console.error('❌ Database setup failed:', error);
+    console.error(' Database setup failed:', error);
     process.exit(1);
   }
 }
